@@ -50,6 +50,12 @@ maulawi_sher_ali = c.fetchall()
 c.execute("select english_text from sir_zafrulla_khan_translation")
 sir_zafrulla_khan_translation = c.fetchall()
 
+c.execute("select translation_text from pir_salahuddin")
+pir_salahuddin_translation = c.fetchall()
+
+c.execute("select footnotes_text from pir_salahuddin")
+pir_salahuddin_footnotes = c.fetchall()
+
 file = open('final_file.txt','w')
 previous_chapter_id = 0
 for i in range (len(title_text)):
@@ -67,8 +73,11 @@ for i in range (len(title_text)):
     file.write(" (خ ر):" + ' '.join(khalifah_rabeh[i]) + "\n")
     if ' '.join(kr_footnotes[i]) != "":
         file.write(" (خ ر ح):" + ' '.join(kr_footnotes[i]) + "\n")
-    file.write("SA: " + ' '.join(maulawi_sher_ali[i]) + "\n")
+    file.write("SA: " + str(i + 1) + "." + ' '.join(maulawi_sher_ali[i]) + "\n")
     file.write("SZK: " + ' '.join(sir_zafrulla_khan_translation[i]) + "\n")
+    file.write("PS: " + ' '.join(pir_salahuddin_translation[i]) + "\n")
+    if ' '.join(pir_salahuddin_footnotes[i]) != "":
+        file.write("PS Footnotes: " + ' '.join(pir_salahuddin_footnotes[i]) + "\n")
     file.write("\n")
 
 file.close()

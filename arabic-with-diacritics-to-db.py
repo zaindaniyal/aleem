@@ -16,7 +16,6 @@ def insertTranslation(c, file):
 	for line in file.readlines():
 		data = line.split()
 		string = ' '.join (data)
-		#print (string)
 		c.execute("INSERT INTO arabic_no_diacritics (arabic_text) VALUES (:fullString)", {'fullString': string})
 
 def readTextfile(c):

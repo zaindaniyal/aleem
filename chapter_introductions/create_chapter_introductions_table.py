@@ -25,7 +25,6 @@ for i in range(114):
     path = f"{chapter}.txt"
     chapter_introduction = open(path)
     text = chapter_introduction.read()
-    #print(text)
     insertChapterIntroductions(c, chapter, text)
 
 closeDb(conn, c)
